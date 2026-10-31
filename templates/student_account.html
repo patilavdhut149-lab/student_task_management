@@ -1,0 +1,13 @@
+{% include 'navbar.html' %}
+<div style="max-width:600px;margin:40px auto;background:#fff;padding:30px;border-radius:12px;box-shadow:0 3px 15px rgba(0,0,0,.12);font-family:Arial,sans-serif">
+    <h2>Student Login Account</h2>
+    <p><strong>Student:</strong> {{ student.first_name }} {{ student.last_name }}</p>
+    <p><strong>Student ID:</strong> {{ student.student_id }}</p>
+    <form method="POST">
+        <label>Student Username</label>
+        <input class="form-control" name="username" value="{{ account.username if account else '' }}" required>
+        <label class="mt-3">Student Password</label>
+        <input class="form-control" type="password" name="password" required>
+        <button class="btn btn-success mt-3 w-100" type="submit">Save Student Login</button>
+    </form>
+</div>

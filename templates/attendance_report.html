@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Report</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f6f9;
+            margin:0;
+            padding:0;
+        }
+
+        .container{
+            width:80%;
+            margin:40px auto;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow:0 0 15px rgba(0,0,0,0.15);
+        }
+
+        h2{
+            text-align:center;
+            color:#333;
+            margin-bottom:20px;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+        }
+
+        th{
+            background:#007bff;
+            color:white;
+            padding:12px;
+        }
+
+        td{
+            padding:10px;
+            text-align:center;
+            border:1px solid #ddd;
+        }
+
+        tr:nth-child(even){
+            background:#f2f2f2;
+        }
+
+        tr:hover{
+            background:#dbeafe;
+        }
+    </style>
+
+</head>
+<body>
+
+    {% include 'navbar.html' %}
+
+<div class="container">
+
+    <h2>Attendance Report</h2>
+
+    <table>
+
+        <tr>
+            <th>Student</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+
+        {% for row in attendance_records %}
+
+        <tr>
+            <td>{{ row.first_name }}</td>
+            <td>{{ row.attendance_date }}</td>
+            <td>{{ row.status }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>

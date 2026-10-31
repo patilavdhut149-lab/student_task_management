@@ -1,0 +1,122 @@
+{% include 'navbar.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2>Edit Student</h2>
+
+<form method="POST">
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <label class="form-label" for="first_name">
+                First Name
+            </label>
+            <input 
+                type="text"
+                id="first_name"
+                name="first_name"
+                class="form-control"
+                value="{{ student.first_name }}"
+                required >
+        </div>
+
+        <div class="col-md-6">
+            <label class="form-label" for="last_name">
+                Last Name
+            </label>
+            <input 
+                type="text"
+                id="last_name"
+                name="last_name"
+                class="form-control"
+                value="{{ student.last_name }}"
+                required >
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-4">
+            <label class="form-label" for="gender">
+                Gender
+            </label>
+
+            <select
+                id="gender"
+                name="gender"
+                class="form-control"
+                required >
+
+                <option value="Male"
+                    {% if student.gender == 'Male' %}
+                        selected
+                    {% endif %}>
+                    Male
+                </option>
+
+                <option value="Female"
+                    {% if student.gender == 'Female' %}
+                        selected
+                    {% endif %}>
+                    Female
+                </option>
+
+            </select>
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label" for="mobile_number">
+                Mobile Number
+            </label>
+
+            <input 
+                type="text"
+                id="mobile_number"
+                name="mobile_number"
+                class="form-control"
+                value="{{ student.mobile_number }}"
+                required >
+        </div>
+
+        <div class="col-md-4">
+            <label class="form-label" for="course_name">
+                Course Name
+            </label>
+
+            <input 
+                type="text"
+                id="course_name"
+                name="course_name"
+                class="form-control"
+                value="{{ student.course_name }}"
+                required >
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <label class="form-label" for="email">
+                Email Address
+            </label>
+
+            <input 
+                type="email"
+                id="email"
+                name="email"
+                class="form-control"
+                value="{{ student.email }}"
+                required >
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-4">
+        Update Student
+    </button>
+</form>
+
+</body>
+</html> 
+</form>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Assign Task</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f6f9;
+            margin:0;
+            padding:0;
+        }
+
+        .container{
+            width:400px;
+            margin:50px auto;
+            background:white;
+            padding:25px;
+            border-radius:10px;
+            box-shadow:0 0 15px rgba(0,0,0,0.15);
+        }
+
+        h2{
+            text-align:center;
+            color:#333;
+            margin-bottom:20px;
+        }
+
+        label{
+            font-weight:bold;
+        }
+
+        select{
+            width:100%;
+            padding:10px;
+            margin-top:5px;
+            border:1px solid #ccc;
+            border-radius:5px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#28a745;
+            color:white;
+            border:none;
+            border-radius:5px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#218838;
+        }
+    </style>
+
+</head>
+<body>
+
+{% include 'navbar.html' %}
+
+<div class="container">
+
+    <h2>Assign Task</h2>
+
+    <form method="POST">
+
+        <label>Student</label>
+
+        <select name="student_id" required>
+
+            {% for student in students %}
+            <option value="{{ student.student_id }}">
+                {{ student.first_name }} {{ student.last_name }}
+            </option>
+            {% endfor %}
+
+        </select>
+
+        <br><br>
+
+        <label>Task</label>
+
+        <select name="task_id" required>
+
+            {% for task in tasks %}
+            <option value="{{ task.task_id }}">
+                {{ task.task_name }}
+            </option>
+            {% endfor %}
+
+        </select>
+
+        <br><br>
+
+        <button type="submit">
+            Assign Task
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

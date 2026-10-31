@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Assigned Tasks</title>
+    <style>
+        body{font-family:Arial,sans-serif;background:#f4f6f9;margin:0}
+        .container{width:90%;margin:40px auto;background:white;padding:25px;border-radius:10px;box-shadow:0 0 15px rgba(0,0,0,.12)}
+        h2{text-align:center;color:#333;margin-bottom:20px}
+        table{width:100%;border-collapse:collapse}th{background:#007bff;color:white;padding:12px}td{padding:10px;text-align:center;border:1px solid #ddd}
+        tr:nth-child(even){background:#f8f9fa}
+        .pending{color:#856404;background:#fff3cd;padding:5px 10px;border-radius:15px;font-weight:bold}
+        .complete{color:#0f5132;background:#d1e7dd;padding:5px 10px;border-radius:15px;font-weight:bold}
+    </style>
+</head>
+<body>
+{% include 'navbar.html' %}
+<div class="container">
+    <h2>Assigned Tasks & Status</h2>
+    <table>
+        <tr>
+            <th>Student</th><th>Task</th><th>Description</th><th>Due Date</th><th>Status</th>
+        </tr>
+        {% for row in student_tasks %}
+        <tr>
+            <td>{{ row.first_name }} {{ row.last_name }}</td>
+            <td>{{ row.task_name }}</td>
+            <td>{{ row.description }}</td>
+            <td>{{ row.due_date }}</td>
+            <td>
+                {% if row.status == 'Complete' %}
+                    <span class="complete">Complete</span>
+                {% else %}
+                    <span class="pending">Pending</span>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background:#f4f6f9;
+            margin:0;
+            padding:0;
+        }
+
+        .container{
+            width:450px;
+            margin:50px auto;
+            background:white;
+            padding:30px;
+            border-radius:10px;
+            box-shadow:0 0 15px rgba(0,0,0,0.15);
+        }
+
+        h2{
+            text-align:center;
+            color:#333;
+            margin-bottom:25px;
+        }
+
+        label{
+            font-weight:bold;
+            display:block;
+            margin-bottom:5px;
+        }
+
+        select,
+        input{
+            width:100%;
+            padding:10px;
+            border:1px solid #ccc;
+            border-radius:5px;
+            margin-bottom:15px;
+            box-sizing:border-box;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            background:#007bff;
+            color:white;
+            border:none;
+            border-radius:5px;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#0056b3;
+        }
+    </style>
+
+</head>
+<body>
+
+{% include 'navbar.html' %}
+
+<div class="container">
+
+    <h2>Attendance</h2>
+
+    <form method="POST">
+
+        <label>Student</label>
+        <select name="student_id" required>
+            {% for student in students %}
+            <option value="{{ student.student_id }}">
+                {{ student.first_name }} {{ student.last_name }}
+            </option>
+            {% endfor %}
+        </select>
+
+        <label>Date</label>
+        <input type="date"
+               name="attendance_date"
+               required>
+
+        <label>Status</label>
+        <select name="status" required>
+            <option value="Present">Present</option>
+            <option value="Absent">Absent</option>
+        </select>
+
+        <button type="submit">
+            Save Attendance
+        </button>
+
+    </form>
+
+</div>
+
+</body>
+</html>

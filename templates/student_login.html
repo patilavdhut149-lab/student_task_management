@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Student Login</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            height: 100vh;
+        }
+
+        .login-box {
+            width: 380px;
+            background: white;
+
+            padding: 30px;
+
+            border-radius: 12px;
+
+            box-shadow:
+                0 4px 15px rgba(0, 0, 0, 0.20);
+
+            text-align: center;
+        }
+
+        .login-box h1 {
+            margin-bottom: 30px;
+
+            font-size: 34px;
+            font-weight: normal;
+
+            color: #222;
+        }
+
+        .login-box label {
+            display: block;
+
+            margin-bottom: 10px;
+
+            font-size: 18px;
+
+            color: #333;
+        }
+
+        .login-box input {
+            width: 90%;
+
+            padding: 14px;
+
+            margin-bottom: 22px;
+
+            border: 1px solid #aaa;
+
+            border-radius: 4px;
+
+            font-size: 16px;
+        }
+
+        .login-box input:focus {
+            outline: none;
+
+            border-color: #1683ff;
+        }
+
+        .login-btn {
+            width: 100%;
+
+            padding: 14px;
+
+            background-color: #1683ff;
+
+            color: white;
+
+            border: none;
+
+            border-radius: 5px;
+
+            font-size: 18px;
+
+            cursor: pointer;
+        }
+
+        .login-btn:hover {
+            background-color: #0875ee;
+        }
+
+        .back-link {
+            display: block;
+
+            margin-top: 22px;
+
+            color: #198754;
+
+            font-size: 18px;
+
+            font-weight: bold;
+
+            text-decoration: none;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .message {
+            color: #dc3545;
+
+            margin-bottom: 15px;
+
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <h1>Student Login</h1>
+
+        {% with messages = get_flashed_messages(with_categories=true) %}
+
+            {% for category, message in messages %}
+
+                <div class="message">
+                    {{ message }}
+                </div>
+
+            {% endfor %}
+
+        {% endwith %}
+
+        <form method="POST" action="{{ url_for('student_login') }}">
+
+            <label for="username">
+                Username
+            </label>
+
+            <input
+                type="text"
+                id="username"
+                name="username"
+                required
+            >
+
+            <label for="password">
+                Password
+            </label>
+
+            <input
+                type="password"
+                id="password"
+                name="password"
+                required
+            >
+
+            <button
+                type="submit"
+                class="login-btn">
+                Login
+            </button>
+
+        </form>
+
+        <a
+            href="{{ url_for('login') }}"
+            class="back-link">
+            User Login
+        </a>
+
+    </div>
+
+</body>
+</html>
