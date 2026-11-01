@@ -616,20 +616,3 @@ def logout():
 if __name__ == '__main__':
     app.run(debug=True)
 
-@app.route('/delete_student/<int:student_id>')
-@admin_required
-def delete_student(student_id):
-    connection = get_db_connection()
-    cursor = connection.cursor()
-
-    cursor.execute(
-        "DELETE FROM students WHERE student_id=%s",
-        (student_id,)
-    )
-
-    connection.commit()
-
-    cursor.close()
-    connection.close()
-
-    return redirect(url_for('students'))
