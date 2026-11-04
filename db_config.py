@@ -1,15 +1,15 @@
-
-import mysql.connector
 import os
+import mysql.connector
 
 def get_db_connection():
     return mysql.connector.connect(
-        host="gateway01.ap-northeast-1.prod.aws.tidbcloud.com",
-        port=4000,
-        user="3BYuxSeV89cKwtX.root",
-        password=os.getenv("TIDB_PASSWORD"),
-        database="student_task_manager",
-        ssl_ca="certs/ca.pem",
+        host=os.getenv("DB_HOST"),
+        port=int(os.getenv("DB_PORT", "4000")),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASSWORD"),
+        database=os.getenv("DB_NAME"),
         ssl_verify_cert=True,
-        ssl_verify_identity=True
+        ssl_verify_identity=True,
+        connection_timeout=20,
+        use_pure=True
     )
